@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% block title %}Лента новостей{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1>Лента новостей</h1>
+    <a class="btn btn-primary" href="{% url 'add_news' %}">Добавить новость</a>
+    <ul class="list-group mt-4">
+        {% for news_item in news %}
+        <li class="list-group-item">
+            <h5><a href="{% url 'news_detail' news_item.pk %}">{{ news_item.title }}</a></h5>
+            <p>{{ news_item.short_description }}</p>
+            <small>Новость создана {{ news_item.published_date }} пользователем {{ news_item.author }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

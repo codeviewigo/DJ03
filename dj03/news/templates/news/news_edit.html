@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {% if news %}
+        {{ news.title }}
+    {% else %}
+        Добавить новость
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1>
+        {% if news %}
+            Изменить новость {{ news.title }}
+        {% else %}
+            Добавить новость
+        {% endif %}
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Сохранить новость</button>
+    </form>
+</div>
+{% endblock %}

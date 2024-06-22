@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ news.title }}</h1>
+    <p>{{ news.content }}</p>
+    <small>Новость создана {{ news.published_date }} пользователем {{ news.author }}</small>
+    <a class="btn btn-warning" href="{% url 'edit_news' news.pk %}">Изменить новость</a>
+</div>
+{% endblock %}
